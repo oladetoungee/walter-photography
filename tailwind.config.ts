@@ -8,6 +8,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        geist: ["var(--font-geist-sans)", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
+        garamond: ["var(--font-eb-garamond)", "serif"],
+        dancing: ["var(--font-dancing-script)", "cursive"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
