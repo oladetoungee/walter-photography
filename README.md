@@ -1,24 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Walter Photography Portfolio
+
+A sophisticated photography portfolio website built with Next.js, showcasing Walter's artistic vision and professional services.
+
+![Walter Photography](https://res.cloudinary.com/dn2oenkss/image/upload/v1742852381/pexels-eva-bronzini-7598668_szhaiz.jpg)
+
+## Features
+
+- **Dynamic Hero Section**: Featuring an animated "WALTER" text with smooth transitions
+- **Portfolio Gallery**: Showcasing various photography categories
+  - Portraits
+  - Documentary
+  - Events
+  - Modeling
+- **Photography Academy**: Online courses and workshops
+- **Responsive Design**: Seamless experience across all devices
+- **Modern UI/UX**: Clean, minimalist design with smooth animations
+- **Contact Form**: Easy client communication
+- **Blog Section**: Photography insights and stories
+
+## Tech Stack
+
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **UI Components**: Custom-built components
+- **Deployment**: Vercel
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Clone the repository
+git clone https://github.com/oladetoungee/walter-photography
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
 ## Learn More
 
