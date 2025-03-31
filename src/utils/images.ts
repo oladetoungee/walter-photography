@@ -5,7 +5,9 @@ export const images = {
   bride4: "https://res.cloudinary.com/dn2oenkss/image/upload/v1743435963/pexels-pexels-user-l-mido-2149772396-31347548_a9fso0.jpg",
   portrait1: "https://res.cloudinary.com/dn2oenkss/image/upload/v1743435965/pexels-olenkabohovyk-3635872_nytzb3.jpg",
   portrait2: "https://res.cloudinary.com/dn2oenkss/image/upload/v1743435965/pexels-bave-pictures-64453798-19207815_nj4x3p.jpg",
-
+  portrait3: "https://res.cloudinary.com/dn2oenkss/image/upload/v1743435965/pexels-bave-pictures-64453798-19207815_nj4x3p.jpg",
+  hero: "https://res.cloudinary.com/dn2oenkss/image/upload/v1743435965/pexels-bave-pictures-64453798-19207815_nj4x3p.jpg",
+  documentary1: "https://res.cloudinary.com/dn2oenkss/image/upload/v1743435965/pexels-bave-pictures-64453798-19207815_nj4x3p.jpg",
 };
 
 export const featuredImages = {
