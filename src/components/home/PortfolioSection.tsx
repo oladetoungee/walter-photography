@@ -1,90 +1,104 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import gsap from 'gsap';
+import { images } from '@/utils/images';
 
 const portfolioItems = [
   {
-    img: "https://res.cloudinary.com/dn2oenkss/image/upload/v1725532805/samples/ecommerce/analog-classic.jpg",
-    title: "Urban Stories",
-    category: "Documentary"
+    img: images.bride1,
+    title: "Metropolitan Echoes",
+    category: "Urban",
+    year: "2024"
   },
   {
-    img: "https://res.cloudinary.com/dn2oenkss/image/upload/v1725532806/samples/people/jazz.jpg",
-    title: "Jazz Nights",
-    category: "Portrait"
+    img: images.bride2,
+    title: "Human Stories",
+    category: "Portrait",
+    year: "2024"
   },
   {
-    img: "https://res.cloudinary.com/dn2oenkss/image/upload/v1725532807/samples/food/spices.jpg",
-    title: "Cultural Heritage",
-    category: "Documentary"
+    img: images.bride3,
+    title: "Abstract Realities",
+    category: "Abstract",
+    year: "2023"
   },
   {
-    img: "https://res.cloudinary.com/dn2oenkss/image/upload/v1725532805/samples/food/dessert.jpg",
-    title: "Sweet Moments",
-    category: "Food"
+    img: images.bride4,
+    title: "Street Poetry",
+    category: "Documentary",
+    year: "2024"
   },
   {
-    img: "https://res.cloudinary.com/dn2oenkss/image/upload/v1725532806/samples/people/kitchen-bar.jpg",
-    title: "Kitchen Tales",
-    category: "Documentary"
+    img: images.portrait1,
+    title: "Urban Geometry",
+    category: "Architecture",
+    year: "2023"
   },
   {
-    img: "https://res.cloudinary.com/dn2oenkss/image/upload/v1725532807/samples/food/spices.jpg",
-    title: "Spice of Life",
-    category: "Food"
+    img: images.portrait2,
+    title: "Natural Harmony",
+    category: "Nature",
+    year: "2024"
   }
 ];
 
 export default function PortfolioSection() {
-  useEffect(() => {
-    // Portfolio items animation
-    gsap.from(".portfolio-item", {
-      scrollTrigger: {
-        trigger: ".portfolio-section",
-        start: "top center",
-        end: "bottom center",
-        toggleActions: "play none none reverse",
-      },
-      duration: 1.2,
-      opacity: 0,
-      y: 100,
-      stagger: 0.3,
-      ease: "power3.out",
-    });
-  }, []);
-
   return (
-    <section className="portfolio-section py-32 bg-black">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+    <section className="py-32 bg-black">
+      <div className="max-w-2xl mx-auto px-6">
+        <motion.h2 
+          className="text-4xl font-light mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-light mb-4">Some of Our Works</h2>
-          <p className="text-gray-400">A collection of moments captured in time</p>
-        </motion.div>
+  <h2 className="text-2xl font-light mb-2">Some of Our Works</h2>
+  <p className="text-gray-400 text-xs">A collection of moments captured in time</p>
+        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
           {portfolioItems.map((item, index) => (
-            <motion.div 
-              key={index}
-              className="portfolio-item group relative overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+            <motion.div
+              key={item.title}
+              className="relative group"
+              initial={{ 
+                opacity: 0, 
+                x: index % 2 === 0 ? -100 : 100 
+              }}
+              whileInView={{ 
+                opacity: 1, 
+                x: 0 
+              }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.2,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true }}
             >
-              <img 
-                src={item.img} 
-                alt={item.title}
-                className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center">
-                <h3 className="text-2xl font-light mb-2">{item.title}</h3>
-                <p className="text-sm tracking-wider">{item.category}</p>
+              {/* Background Div   put details here*/}
+              <div 
+  className='absolute top-12 left-8 w-full h-full bg-neutral-900 bg-opacity-70 transition-transform duration-500 
+  group-hover:translate-x-0 flex flex-col justify-end pb-2 pr-4 '
+>
+  <div className="text-right text-gray-400">
+    <h3 className="text-sm">{item.title}</h3>
+    <p className="text-xs ">{item.category} | {item.year}</p>
+  </div>
+</div>
+
+              
+              {/* Main Image Container */}
+              <div className="relative overflow-hidden">
+                <motion.img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full aspect-[4/5] object-cover"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                />
+  
               </div>
             </motion.div>
           ))}

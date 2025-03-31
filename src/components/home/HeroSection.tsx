@@ -1,6 +1,6 @@
 'use client';
 
-import MovingText from '../ui/MovingText';
+import MovingLogo from '../ui/MovingLogo';
 
 export default function HeroSection() {
     return (
@@ -9,11 +9,11 @@ export default function HeroSection() {
             <div 
                 className="absolute inset-0 z-0"
                 style={{
-                    backgroundImage: "url('https://res.cloudinary.com/dn2oenkss/image/upload/v1742852381/pexels-eva-bronzini-7598668_szhaiz.jpg')",
+                    backgroundImage: "url('https://res.cloudinary.com/dn2oenkss/image/upload/v1742993618/walter-bg_w9srwx.jpg')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    opacity: 0.5, // Adjust this value to make the image more or less visible
+                  
                 }}
             />
 
@@ -22,14 +22,19 @@ export default function HeroSection() {
 
             {/* Content Container */}
             <div className="relative z-20">
-                {/* Main WALTER Text */}
+                {/* Moving Logo */}
                 <div className="flex items-center justify-center overflow-hidden">
-                    <MovingText text={"WALTER."} className="text-[4rem] sm:text-[8rem] md:text-[12rem] lg:text-[15rem] font-bold whitespace-nowrap" />
+                    <MovingLogo 
+                        src="https://res.cloudinary.com/dn2oenkss/image/upload/v1742993619/walter-logo_rsxjcf.png"
+                        className="w-full md:w-[600px] lg:w-[800px]"
+                    />
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col md:flex-row justify-between items-start px-4 sm:px-6 md:px-12 space-y-8 md:space-y-0 md:space-x-8">
-                    {/* Branding Section - Left */}
+                   
+          
+                 {/* Branding Section - Left */}
                     <div className="max-w-lg w-full md:w-auto">
                         <h4 className="text-2xl sm:text-3xl md:text-4xl font-light mb-2">Walter</h4>
                         <p className="text-xs sm:text-sm md:text-xs text-gray-300 leading-relaxed">
