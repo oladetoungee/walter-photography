@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { images, featuredImages } from '../../utils/images';
+import { images, featuredImages } from '../../data/images';
 import LazyImage from '../ui/LazyImage';
+import { PageHeader } from '../shared/PageHead';
 
 interface Testimonial {
   id: number;
@@ -103,25 +104,15 @@ export default function TestimonialSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-32 bg-black overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
-          className="text-center mb-24"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-light mb-4">Our Clients</h2>
-          <p className="text-gray-400">Trusted by industry leaders</p>
-        </motion.div>
-
+    <section className="overflow-hidden mt-8">
+      <div className="max-w-7xl px-6">
+       <PageHeader title="Our Clients" description="Trusted by industry leaders" /> 
         {/* Client Images Row */}
-        <div className="relative h-[300px] flex items-center justify-center gap-8">
+        <div className="relative h-[450px] flex items-center justify-center gap-8 mb-8">
           {testimonials.map((item, index) => (
             <motion.div
               key={item.id}
-              className="relative w-[200px] h-[250px] cursor-pointer perspective-1000"
+              className="relative w-[200px] h-[400px] cursor-pointer perspective-1000"
               animate={{
                 y: hoveredIndex !== null ? 
                   (hoveredIndex === index ? -20 : 
@@ -148,7 +139,7 @@ export default function TestimonialSection() {
                 <LazyImage
                   src={item.image}
                   alt={item.name}
-                  aspectRatio="aspect-[4/5]"
+                  aspectRatio="aspect-[2/5]"
                 />
               </motion.div>
             </motion.div>
@@ -162,7 +153,7 @@ export default function TestimonialSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 "
             >
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}

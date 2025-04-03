@@ -15,7 +15,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
+import { PageHeader } from "@/components/shared/PageHead";
 // Define the form schema with Zod
 const registrationFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -88,16 +88,10 @@ export function AcademyForm({ courses, formRef }: AcademyFormProps) {
   return (
     <section ref={formRef} className="py-20">
       <div className="max-w-4xl mx-auto px-6">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl mb-4">Register for a Course</h2>
-          <p className="text-gray-400">Start your photography journey today</p>
-        </motion.div>
+       
+             <PageHeader title="Register for a Course" description="Start your photography journey today" />
+  
+    
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

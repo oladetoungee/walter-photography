@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { images } from '@/utils/images';
+import { images } from '@/data/images';
 import LazyImage from '../ui/LazyImage';
-
+import { PageHeader } from '../shared/PageHead';
 const portfolioItems = [
   {
     img: images.bride1,
@@ -47,16 +47,8 @@ export default function PortfolioSection() {
   return (
     <section className="py-32 bg-black">
       <div className="max-w-2xl mx-auto px-6">
-        <motion.h2 
-          className="text-4xl font-light mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-2xl font-light mb-2">Some of Our Works</h2>
-          <p className="text-gray-400 text-xs">A collection of moments captured in time</p>
-        </motion.h2>
+    
+       <PageHeader title="Some of Our Works" description="A collection of moments captured in time" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
           {portfolioItems.map((item, index) => (

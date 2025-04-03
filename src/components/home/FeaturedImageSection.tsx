@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { featuredImages } from '@/utils/images';
+import { featuredImages } from '@/data/images';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -152,7 +152,7 @@ export default function FeaturedImageSection() {
   };
 
   return (
-    <section className="featured-section relative h-screen overflow-hidden bg-black perspective-1000">
+    <section className="featured-section relative h-screen overflow-hidden perspective-1000">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={currentIndex}
