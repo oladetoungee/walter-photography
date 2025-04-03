@@ -247,6 +247,6 @@ html {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black text-muted-foreground;
   }
 }
