@@ -1,8 +1,8 @@
 'use client';
 
-import { HeroSection } from '@/components/ui/HeroSection';
+import { HeroSection } from '@/components/shared/hero-section';
 import { featuredImages } from '@/data/images';
-import { ContentContent } from '@/components/contact/content-content';
+import { ContactContent } from '@/components/contact/contact-content';
 
 export default function Contact() {
   return (
@@ -13,7 +13,7 @@ export default function Contact() {
         description="Your vision, our expertise. Let's create something extraordinary together."
       />
 
-      <ContentContent />
+      <ContactContent />
     </div>
   );
 } 
