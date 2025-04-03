@@ -5,7 +5,7 @@ import { images } from '@/data/images';
 import { HeroSection } from '@/components/shared/hero-section';
 import { CallToAction } from '@/components/shared/call-to-action';
 
-export default function Portraits() {
+export default function Modeling() {
   const allImages = Object.entries(images).map(([key, url]) => ({
     id: key,
     url: url
@@ -13,10 +13,10 @@ export default function Portraits() {
 
   return (
     <div>
-    <HeroSection
-        image={images.documentary1}
-        title="Portrait Gallery"
-        description="A collection of portrait photography"
+      <HeroSection
+        image={images.portrait1}
+        title="Modeling Gallery"
+        description="Fashion, beauty, and editorial photography"
       />
       <section className="py-12 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
@@ -32,7 +32,7 @@ export default function Portraits() {
               >
                 <img
                   src={image.url}
-                  alt={`Portrait ${index + 1}`}
+                  alt={`Modeling ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors duration-300" />
