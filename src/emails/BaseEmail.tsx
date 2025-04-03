@@ -35,7 +35,7 @@ export default function BaseEmail({ subject, content }: BaseEmailProps) {
             {content.body}
           </Section>
           <Text style={styles.footer}>
-            © {new Date().getFullYear()} Your Company. All rights reserved.
+            © {new Date().getFullYear()} Walter Jeremiah. All rights reserved.
           </Text>
         </Container>
       </Body>
