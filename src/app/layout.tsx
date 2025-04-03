@@ -15,7 +15,7 @@ const italiana = Italiana({
 
 export const metadata: Metadata = {
   title: 'Walter Photography | Documentary & Portrait Photography',
-  description: 'Walter Brown is a visionary photographer capturing life\'s most precious moments through documentary and portrait photography. Based in Canada.',
+  description: 'Walter Jeremiah is a visionary photographer capturing life\'s most precious moments through documentary and portrait photography. Based in Canada.',
   keywords: 'photography, documentary photography, portrait photography, wedding photography, modeling photography, Canada photographer',
 };
 
