@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { images, featuredImages } from '../../utils/images';
+import LazyImage from '../ui/LazyImage';
 
 interface Testimonial {
   id: number;
@@ -144,14 +145,10 @@ export default function TestimonialSection() {
                   boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
                 }}
               >
-                <motion.img
+                <LazyImage
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover"
-                  style={{
-                    filter: hoveredIndex !== null && hoveredIndex !== index ? 
-                      'brightness(0.7)' : 'brightness(1)'
-                  }}
+                  aspectRatio="aspect-[4/5]"
                 />
               </motion.div>
             </motion.div>
@@ -183,10 +180,10 @@ export default function TestimonialSection() {
                 {/* Testimonial Content */}
                 <div className="grid md:grid-cols-2 gap-8 p-8">
                   <div className="aspect-square">
-                    <motion.img
-                      src={testimonials.find(t => t.id === selectedId)?.image}
+                    <LazyImage
+                      src={testimonials.find(t => t.id === selectedId)?.image || ''}
                       alt="Client"
-                      className="w-full h-full object-cover rounded-lg"
+                      aspectRatio="aspect-square"
                     />
                   </div>
                   <div className="flex flex-col justify-center">

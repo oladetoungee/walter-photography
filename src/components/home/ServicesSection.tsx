@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { images, featuredImages } from '@/utils/images';
+import LazyImage from '../ui/LazyImage';
 
 const services = [
   {
@@ -71,10 +72,10 @@ export default function ServicesSection() {
             >
               {/* Background Image */}
               <div className="absolute inset-0 overflow-hidden">
-                <img 
-                  src={service.image} 
+                <LazyImage
+                  src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover"
+                  aspectRatio="aspect-[3/4]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
               </div>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { images } from '@/utils/images';
+import LazyImage from '../ui/LazyImage';
 
 const portfolioItems = [
   {
@@ -53,8 +54,8 @@ export default function PortfolioSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-  <h2 className="text-2xl font-light mb-2">Some of Our Works</h2>
-  <p className="text-gray-400 text-xs">A collection of moments captured in time</p>
+          <h2 className="text-2xl font-light mb-2">Some of Our Works</h2>
+          <p className="text-gray-400 text-xs">A collection of moments captured in time</p>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
@@ -77,28 +78,24 @@ export default function PortfolioSection() {
               }}
               viewport={{ once: true }}
             >
-              {/* Background Div   put details here*/}
+              {/* Background Div with details */}
               <div 
-  className='absolute top-12 left-8 w-full h-full bg-neutral-900 bg-opacity-70 transition-transform duration-500 
-  group-hover:translate-x-0 flex flex-col justify-end pb-2 pr-4 '
->
-  <div className="text-right text-gray-400">
-    <h3 className="text-sm">{item.title}</h3>
-    <p className="text-xs ">{item.category} | {item.year}</p>
-  </div>
-</div>
-
+                className='absolute top-12 left-8 w-full h-full bg-neutral-900 bg-opacity-70 transition-transform duration-500 
+                group-hover:translate-x-0 flex flex-col justify-end pb-2 pr-4'
+              >
+                <div className="text-right text-gray-400">
+                  <h3 className="text-sm">{item.title}</h3>
+                  <p className="text-xs">{item.category} | {item.year}</p>
+                </div>
+              </div>
               
               {/* Main Image Container */}
               <div className="relative overflow-hidden">
-                <motion.img
+                <LazyImage
                   src={item.img}
                   alt={item.title}
-                  className="w-full aspect-[4/5] object-cover"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
+                  aspectRatio="aspect-[4/5]"
                 />
-  
               </div>
             </motion.div>
           ))}
