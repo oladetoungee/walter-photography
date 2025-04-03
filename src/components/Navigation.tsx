@@ -42,7 +42,7 @@ export default function Navigation() {
     //   isScrolled ? 'bg-black backdrop-blur-md py-4' : 'bg-transparent py-6'
     // }`}
     <motion.nav
-      className='fixed w-full z-50 transition-all duration-300 bg-black/50 backdrop-blur-md py-6'
+      className='fixed w-full z-50 transition-all duration-300 bg-black backdrop-blur-md py-6'
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}

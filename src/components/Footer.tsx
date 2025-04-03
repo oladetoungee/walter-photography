@@ -131,7 +131,7 @@ export default function Footer() {
               </motion.a>
             </div>
             <div className="text-center md:text-right text-sm text-gray-400">
-              <p>© 2024 Walter Photography. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Walter Photography. All rights reserved.</p>
     
             </div>
           </div>
