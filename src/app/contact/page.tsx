@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Instagram, Facebook, Twitter } from 'lucide-react';
 import { images } from '@/utils/images';
-import { ContactForm } from "@/components/ContactForm"
+import { ContactForm } from "@/components/contact/ContactForm"
 
 
 export default function Contact() {
