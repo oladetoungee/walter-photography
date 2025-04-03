@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Camera, Book, Users, Award, Clock, Calendar } from 'lucide-react';
 import { images } from '@/utils/images';
+import { Button } from "@/components/ui/button";
+import { AcademyForm } from '@/components/academy/AcademyForm';
 
 const courses = [
   {
@@ -14,7 +16,7 @@ const courses = [
     schedule: 'Tuesdays & Thursdays',
     price: '$499',
     level: 'Beginner',
-    image: images.academy1
+    image: images.documentary1
   },
   {
     id: 2,
@@ -39,32 +41,16 @@ const courses = [
 ];
 
 export default function Academy() {
-  const [selectedCourse, setSelectedCourse] = useState<typeof courses[0] | null>(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    course: '',
-    message: ''
-  });
+  const formRef = useRef<HTMLDivElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      course: '',
-      message: ''
-    });
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[60vh] overflow-hidden">
+      <section className="relative h-[70vh] overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
@@ -75,15 +61,15 @@ export default function Academy() {
           transition={{ duration: 1.5 }}
         />
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 h-full flex items-center justify-center">
+        <div className="relative z-10 h-full flex items-center justify-center text-gray-300">
           <motion.div 
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-5xl font-light mb-4">Photography Academy</h1>
-            <p className="text-xl text-gray-300">Learn from the best in the industry</p>
+            <h1 className="text-5xl font-light mb-4">Walter Academy</h1>
+            <p className="text-xl">Learn from the best in the industry</p>
           </motion.div>
         </div>
       </section>
@@ -137,12 +123,12 @@ export default function Academy() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-xl font-light">{course.price}</span>
-                    <button
-                      className="px-6 py-2 bg-white text-black text-sm tracking-wider hover:bg-gray-200 transition-colors"
-                      onClick={() => setSelectedCourse(course)}
+                    <Button
+                      variant="outline"
+                      onClick={() => scrollToForm()}
                     >
                       Enroll Now
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </motion.div>
@@ -152,83 +138,7 @@ export default function Academy() {
       </section>
 
       {/* Registration Form */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-light mb-4">Register for a Course</h2>
-            <p className="text-gray-400">Start your photography journey today</p>
-          </motion.div>
-
-          <motion.form
-            className="space-y-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            onSubmit={handleSubmit}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full p-4 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full p-4 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
-                required
-              />
-            </div>
-            <input
-              type="tel"
-              placeholder="Your Phone"
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full p-4 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
-              required
-            />
-            <select
-              value={formData.course}
-              onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-              className="w-full p-4 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
-              required
-            >
-              <option value="">Select a Course</option>
-              {courses.map((course) => (
-                <option key={course.id} value={course.title}>
-                  {course.title}
-                </option>
-              ))}
-            </select>
-            <textarea
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              rows={4}
-              className="w-full p-4 bg-transparent border-b border-gray-700 focus:border-white outline-none transition-colors"
-              required
-            />
-            <button
-              type="submit"
-              className="w-full py-4 px-8 bg-white text-black font-light tracking-wider hover:bg-gray-200 transition-colors"
-            >
-              Submit Registration
-            </button>
-          </motion.form>
-        </div>
-      </section>
+      <AcademyForm courses={courses} formRef={formRef} />
     </div>
   );
 } 
