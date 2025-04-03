@@ -79,20 +79,57 @@ const imageContents: ImageContent[] = [
   }
 ];
 
+const preloadImages = (imageContents: ImageContent[]) => {
+  imageContents.forEach(({ image }) => {
+    const img = new Image();
+    img.src = image;
+  });
+};
+
 export default function FeaturedImageSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [animationTriggered, setAnimationTriggered] = useState(false);
 
   const nextSlide = useCallback(() => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % imageContents.length);
   }, []);
 
+  // Preload images
+  useEffect(() => {
+    preloadImages(imageContents);
+  }, []);
+
   // Auto-advance slides
   useEffect(() => {
-    const timer = setInterval(nextSlide, 3000); 
+    const timer = setInterval(nextSlide, 3000);
     return () => clearInterval(timer);
   }, [nextSlide]);
+
+  // Delay GSAP animation until after the first slide has loaded
+  useEffect(() => {
+    if (animationTriggered) return;
+    
+    // Give some time for the first slide to appear before animating
+    const timeout = setTimeout(() => {
+      gsap.from(".featured-section", {
+        scrollTrigger: {
+          trigger: ".featured-section",
+          start: "top center",
+          end: "bottom center",
+          toggleActions: "play none none reverse",
+        },
+        duration: 1.5,
+        opacity: 0,
+        scale: 0.95,
+        ease: "power3.out",
+      });
+      setAnimationTriggered(true);
+    }, 100); // Small delay to ensure first slide shows
+
+    return () => clearTimeout(timeout);
+  }, [animationTriggered]);
 
   const pageVariants = {
     enter: (direction: number) => ({
@@ -114,30 +151,14 @@ export default function FeaturedImageSection() {
     })
   };
 
-  useEffect(() => {
-    // GSAP animation for the section
-    gsap.from(".featured-section", {
-      scrollTrigger: {
-        trigger: ".featured-section",
-        start: "top center",
-        end: "bottom center",
-        toggleActions: "play none none reverse",
-      },
-      duration: 1.5,
-      opacity: 0,
-      scale: 0.95,
-      ease: "power3.out",
-    });
-  }, []);
-
   return (
     <section className="featured-section relative h-screen overflow-hidden bg-black perspective-1000">
-      <AnimatePresence initial={false} custom={direction}>
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={currentIndex}
           custom={direction}
           variants={pageVariants}
-          initial="enter"
+          initial={false}
           animate="center"
           exit="exit"
           transition={{
@@ -148,15 +169,13 @@ export default function FeaturedImageSection() {
           className="absolute inset-0 origin-center"
         >
           {/* Background Image */}
-          <motion.div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url('${imageContents[currentIndex].image}')`,
-            }}
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5 }}
-          />
+          <div className="absolute inset-0">
+            <img
+              src={imageContents[currentIndex].image}
+              alt={imageContents[currentIndex].title}
+              className="w-full h-full object-cover"
+            />
+          </div>
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
@@ -238,4 +257,4 @@ export default function FeaturedImageSection() {
       </AnimatePresence>
     </section>
   );
-} 
+}
