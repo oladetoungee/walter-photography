@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Italiana } from 'next/font/google';
 import './globals.css';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import Navigation from '@/components/shared/Navigation';
+import Footer from '@/components/shared/Footer';
 import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ['latin'] });
+const italiana = Italiana({ 
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-italiana',
+});
 
 export const metadata: Metadata = {
   title: 'Walter Photography | Documentary & Portrait Photography',
@@ -21,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
+      <body className={` ${italiana.variable} ${inter.className}`}>
          <Navigation />
         {children}
         <Footer />

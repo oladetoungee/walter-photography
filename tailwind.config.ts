@@ -25,7 +25,11 @@ export default {
   			dancing: [
   				'var(--font-dancing-script)',
   				'cursive'
-  			]
+  			],
+        italiana: [
+          'var(--font-italiana)',
+          'serif'
+        ]
   		},
   		colors: {
   			background: 'hsl(var(--background))',
