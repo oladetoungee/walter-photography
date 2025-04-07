@@ -8,7 +8,7 @@ import { services } from '@/data/services';
 
 export default function ServicesSection() {
   return (
-    <section className="">
+    <section className="mt-16">
       <div className="max-w-7xl mx-auto px-4">
           <PageHeader title="Services" description="Comprehensive photography solutions tailored to your unique vision" />
        
