@@ -108,11 +108,11 @@ export default function TestimonialSection() {
       <div className="max-w-7xl px-6">
        <PageHeader title="Our Clients" description="Trusted by industry leaders" /> 
         {/* Client Images Row */}
-        <div className="relative h-[450px] flex items-center justify-center gap-8 mb-8">
+        <div className="relative h-full flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-8">
           {testimonials.map((item, index) => (
             <motion.div
               key={item.id}
-              className="relative w-[200px] h-[400px] cursor-pointer perspective-1000"
+              className="relative w-[100px] sm:w-[140px] md:w-[180px] lg:w-[200px] h-full cursor-pointer"
               animate={{
                 y: hoveredIndex !== null ? 
                   (hoveredIndex === index ? -20 : 
